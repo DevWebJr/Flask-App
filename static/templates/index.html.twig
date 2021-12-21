@@ -1,0 +1,103 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col md-12">
+                <div class="container p-3 bg-secondary text-center">
+                    <h2 class="text-primary">Manage <b class="text-primary">Employees</b>
+                        <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#mymodal">
+                            Add New Employees
+                        </button>
+                    </h2>
+
+                    <table class="table table-hover table-dark">
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Tito</td>
+                            <td>tito@mail.com</td>
+                            <td>0066600666</td>
+
+                            <td>
+                                <a href="" class="btn btn-warning btn-xs" data-bs-toggle="modal" data-bs-target="#modaledit">
+                                    Edit
+                                </a>
+                                <a href="" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to delete ?')">
+                                    Delete  
+                                </a>
+                            </td>
+                        </tr>
+                    </div>
+                    <div id="modaledit" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Update Employee</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="" method="POST">
+                                        <div class="form-group">
+                                            <label for="">Name:</label>
+                                            <input type="hidden" class="form-control" name="id" value="id">
+                                            <input type="text" class="form-control" name="name" value="Tito">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Email:</label>
+                                            <input type="email" class="form-control" name="email" required="1">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Phone:</label>
+                                            <input type="number" class="form-control" name="phone" required="1">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Add</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="mymodal" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Add Employee</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="" method="POST">
+                                        <div class="form-group">
+                                            <label for="">Name:</label>
+                                            <input type="text" class="form-control" name="name" required="1">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Email:</label>
+                                            <input type="email" class="form-control" name="email" required="1">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Phone:</label>
+                                            <input type="number" class="form-control" name="phone" required="1">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Add</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </table>
+                </div>
+            </div>
+    </div>
+{% endblock %}
