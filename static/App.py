@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import backref
 
 app = Flask(__name__)
 app.secret_key = "Secret Key"
@@ -15,6 +16,26 @@ class Employee(db.Model):
     name = db.Column(db.String(255))    
     email = db.Column(db.String(255))    
     phone = db.Column(db.String(255))    
+    
+    def __init__(self, name, email, phone):
+        self.name = name
+        self.email = email
+        self.phone = phone
+
+class Category(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String(255))  
+
+    def __init__(self, name):
+        self.name = name
+        self.books = db.relationship('Book', backref='owner')
+        
+        
+class Book(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    title = db.Column(db.String(255))    
+    price = db.Column(db.Float)    
+    category = db.Column(db.Integer, db.ForeignKey('category.id'))    
 
     def __init__(self, name, email, phone):
         self.name = name
