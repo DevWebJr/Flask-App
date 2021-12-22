@@ -45,6 +45,7 @@
                             <td> {{row.name}} </td>
                             <td> {{row.email}} </td>
                             <td> {{row.phone}} </td>
+                            <td> {{row.role}} </td>
                             <td>
                                 <a href="/update/{{row.id}}" class="btn btn-warning btn-xs" data-bs-toggle="modal" data-bs-target="#modaledit{{row.id}}">
                                     Edit
@@ -77,11 +78,19 @@
                                             <label for="">Phone:</label>
                                             <input type="number" class="form-control" name="phone" value="{{row.phone}}" required="1">
                                         </div>
+                                        <div class="form-group">
+                                            <select class="form-select" aria-label="Default select example">
+                                                <option selected>Role</option>
+                                                <option value="{{row.role}}" >Admin</option>
+                                                <option value="{{row.role}}" >Manager</option>
+                                                <option value="{{row.role}}" >Bookseller</option>
+                                            </select>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">Update</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        </div>
                                     </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary">Update</button>
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </div>
@@ -107,12 +116,21 @@
                                             <label for="">Phone:</label>
                                             <input type="number" class="form-control" name="phone" required="1">
                                         </div>
+                                        <div class="form-group">
+                                            <select class="form-select" aria-label="Default select example">
+                                                <option selected>Role</option>
+                                                <option>Admin</option>
+                                                <option>Manager</option>
+                                                <option>Bookseller</option>
+                                            </select>
+                                        </div>
+                                        <div class="modal-footer">
                                             <button type="submit" class="btn btn-primary">Add</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        </div>
                                     </form>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
