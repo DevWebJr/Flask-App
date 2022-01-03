@@ -13,19 +13,18 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
-class EmployeeRole(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+class Role(enum.Enum):
+    bookseller = "Bookseller"
+    manager = "Manager"
+    admin = "Admin"
 
-    def __init__(self, name):
-        self.name = name
-    
     
 class Employee(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255))    
     email = db.Column(db.String(255))    
     phone = db.Column(db.String(255))
-    role = db.Column(db.Integer, db.ForeignKey('EmployeeRole.id'))
+    role = db.Column(db.Enum(Role), nullable=False)
     print(role)
     
     def __init__(self, name, email, phone, role):
@@ -36,7 +35,7 @@ class Employee(db.Model):
 
 
 class Category(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255))  
 
     def __init__(self, name):
@@ -45,7 +44,7 @@ class Category(db.Model):
         
         
 class Book(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255))    
     price = db.Column(db.Float)    
     category = db.Column(db.Integer, db.ForeignKey('category.id'))    
